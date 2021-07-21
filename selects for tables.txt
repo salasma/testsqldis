@@ -1,0 +1,92 @@
+
+-- SELECT SQL QUERIES
+
+-- STATES: use one at a time, running multiple at once won't work. If you want multiple cities just combine where statements with AND
+
+
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'California';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Texas';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Florida';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'New York';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Illinois';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Pennsylvania';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Ohio';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Georgia';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'North Carolina';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Michigan';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'New Jersey';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Virginia';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Washington';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Arizona';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Massachusetts';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Tennessee';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Indiana';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Missouri';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Maryland';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Wisconsin';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Colorado';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Minnesota';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'South Carolina';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Alabama';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Louisiana';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Kentucky';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Oregon';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Oklahoma';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Connecticut';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Utah';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Iowa';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Nevada';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Arkansas';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Mississippi';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Kansas';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'New Mexico';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'West Virginia';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Idaho';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Hawaii';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'New Hampshire';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Maine';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Montana';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Rhode Island';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Delaware';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'South Dakota';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'North Dakota';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Alaska';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Washington D.C.';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Vermont';
+SELECT stateID, statePop, percentageSick FROM states WHERE stateID = 'Wyoming';
+
+-- These were the test values inserted into the users and instances tables so I could mess around with selects
+
+-- USERS
+
+INSERT INTO users(email, stateID, sicknessID) VALUES ('test@gmail.com', 'Texas', 1);
+INSERT INTO users(email, stateID, sicknessID) VALUES ('hello@gmail.com', 'Arkansas', 3);
+INSERT INTO users(email, stateID, sicknessID) VALUES ('hi@gmail.com', 'Oregon', 2);
+INSERT INTO users(email, stateID, sicknessID) VALUES ('boop@gmail.com', 'Virginia', 4);
+INSERT INTO users(email, stateID, sicknessID) VALUES ('beepp@gmail.com', 'Michigan', 1);
+INSERT INTO users(email, stateID, sicknessID) VALUES ('foo@gmail.com', 'Kansas', 1);
+INSERT INTO users(email, stateID, sicknessID) VALUES ('bar@gmail.com', 'Oregon', 1);
+
+-- INSTANCES
+
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2021-07-15', NULL , 2, 3);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2021-07-08', NULL, 3, 2);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2021-07-011', NULL, 4, 4);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2021-04-011', '2021-04-13', 1, 4);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2019-09-011', '2021-09-16', 1, 2);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2020-04-011', '2021-04-20', 5, 3);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2020-06-014', '2020-06-23', 6, 3);
+INSERT INTO instances(startDate, endDate, userID, sicknessID) VALUES ('2020-02-09', '2020-02-15', 7, 2);
+
+-- How to join to the USER - INSTANCES table and select from it
+
+SELECT startDate, endDate, diagnosisName FROM instances
+
+JOIN diagnoses ON instances.sicknessID = diagnoses.sicknessID
+JOIN users ON diagnoses.sicknessID = users.sicknessID
+
+WHERE users.userID = 2;
+
+-- shows the startDate, endDate, and diagnosisName (NOTE: not the sicknessID) for the specified user. if emails are unique, then using
+users.email = 'email@here' would also work for specifying a user
+
