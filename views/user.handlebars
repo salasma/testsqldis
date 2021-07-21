@@ -1,0 +1,36 @@
+<h1>Current user: {{user.userID}}</h1>
+
+<table>
+    <thead>
+        <th>userID</th>
+        <th>email</th>
+        <th>stateID</th>
+        <th>status</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{user.userID}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.stateID}}</td>
+            <td>{{user.diagnosisName}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <th>startDate</th>
+        <th>endDate</th>
+        <th>status</th>
+    </thead>
+    <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{userID}}</td>
+                <td>{{email}}</td>
+                <td>{{stateID}}</td>
+                <td>{{diagnosisName}}</td>
+            </tr>
+            {{/each}}
+     </tbody>
+</table>

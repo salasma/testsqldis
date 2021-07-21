@@ -1,0 +1,36 @@
+<h1>Current user: {{instances.[0].userID}}</h1>
+
+<table>
+    <thead>
+        <th>startDate</th>
+        <th>endDate</th>
+        <th>userID</th>
+        <th>sicknessID</th>
+    </thead>
+    <tbody>
+        {{#each instances}}
+        <tr>
+            <td>{{startDate}}</td>
+            <td>{{endDate}}</td>
+            <td>{{userID}}</td>
+            <td>{{sicknessID}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<form id = "addInstance" action = "/instances/:{{instances.[0].userID}}" method = "post">
+start date: <input type = "date" name = "startDate"> <br>
+end date:  <input type = "date" name = "endDate"> <br>
+diagnosis: <select name = "sicknessID">
+    {{#each diagnoses}}
+    <option value = "{{sicknessID}}"> {{diagnosisName}}</option>
+    {{/each}}
+    </select> <br>
+
+<input type = "submit" value = "Add new instance">
+</form>
+
+
+
+

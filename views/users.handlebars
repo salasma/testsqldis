@@ -1,0 +1,38 @@
+<h1>Current users:</h1>
+
+<table>
+    <thead>
+        <th>userID</th>
+        <th>email</th>
+        <th>state</th>
+        <th>status</th>
+        <th>sicknessID</th>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <td>{{userID}}</td>
+            <td>{{email}}</td>
+            <td>{{stateID}}</td>
+            <td>{{diagnosisName}}</td>
+            <td>{{sicknessID}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<form id = "addUser" action = "/users" method = "post">
+email: <input type = "text" name = "email"> <br>
+state: <select name = "stateID">
+           {{#each states}}
+           <option value = "{{stateID}}"> {{stateID}}</option>
+           {{/each}}
+           </select> <br>
+diagnosis: <select name = "sicknessID">
+    {{#each diagnoses}}
+    <option value = "{{sicknessID}}"> {{diagnosisName}}</option>
+    {{/each}}
+    </select> <br>
+
+<input type = "submit" value = "Add new user">
+</form>

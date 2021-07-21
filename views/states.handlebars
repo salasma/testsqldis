@@ -1,0 +1,19 @@
+<h1>Current states:</h1>
+
+
+<table>
+    <thead>
+        <th>State</th>
+        <th>population</th>
+        <th>percentage sick</th>
+    </thead>
+    <tbody>
+        {{#each states}}
+        <tr>
+            <td>{{stateID}}</td>
+            <td>{{statePop}}</td>
+            <td>{{percentageSick}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
